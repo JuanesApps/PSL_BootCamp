@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldController {
     @Value("${HELLO:hola}")
     private String greeting;
+
     @GetMapping("/hello/{name}")
-    public String helloWorld(@PathVariable("name") String name) {
-        return greeting + " " + name;
+    public HelloWorldDTO helloWorldDTO(@PathVariable("name") String name) {
+        return new HelloWorldDTO(greeting + " " + name, 1L);
     }
 }
